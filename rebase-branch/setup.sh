@@ -1,10 +1,10 @@
-#/bin/bash
+#!/bin/bash
 
 # Include utils
 source ../utils/utils.sh
 kata="rebase-branch"
 
-makerepo
+make-exercise-repo
 
 touch greeting.txt
 git add greeting.txt

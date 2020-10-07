@@ -1,8 +1,10 @@
+#!/bin/bash
 kata="kata2-squashing"
-rm -rf exercise
-mkdir exercise
-cd exercise
-git init
+
+# Include utils
+source ../utils/utils.sh
+
+make-exercise-repo
 
 touch alsoafile.txt
 

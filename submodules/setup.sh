@@ -1,31 +1,36 @@
-#!/usr/bin/env bash
+#!/bin/bash
+kata="submodules"
 
-SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-echo ${SCRIPT_PATH}
+# Include utils
+source ../utils/utils.sh
 
-EXERCISE_DIR=${SCRIPT_PATH}/exercise
+# First cleanup if there is an old exercise folder
+rm -rf exercise
 
-if [ -d ${EXERCISE_DIR} ]; then
-  rm -rf ${EXERCISE_DIR}
-fi
+# Create exercise folder & go there
+mkdir exercise
+cd exercise
 
-mkdir ${EXERCISE_DIR}
+# Create remote repo
+make-bare-remote-repo
 
-cd ${EXERCISE_DIR}
+# Clone it so that it is ready for the exercise
+git clone remote component
 
-mkdir component
-
+# Commit a file to the component repo & push it to the remote
 cd component
-git init
 touch component.h
 git add component.h
-git commit -m "Touch component header."
-
+git commit -m "Touch component header"
+git push
 cd ..
 
-mkdir product
+# Create a product repo
+git init product
+
+# Commit a file to the product repo
 cd product
-git init
 touch product.h
 git add product.h
-git commit -m "Touch product header."
+git commit -m "Touch product header"
+cd ..

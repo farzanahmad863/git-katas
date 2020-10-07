@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-rm -rf exercise
-mkdir exercise
 
-cd exercise
+# Include utils
+source ../utils/utils.sh
 
-git init
+make-exercise-repo
 
 for i in {1..10}
 do
